@@ -9,3 +9,21 @@ html, body {
 	width:100%;
 }
 
+.my-icon {
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  line-height: 10px;
+  color: white;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+
+.icon-dc {
+  background: #3ca0d3;
+}
+
+.icon-sf {
+  background: #4169E1;
+}
