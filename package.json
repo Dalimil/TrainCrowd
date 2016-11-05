@@ -1,0 +1,25 @@
+{
+  "name": "traincrowd",
+  "version": "0.1.0",
+  "description": "HackTrain 3.0 - TrainCrowd",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dalimil Hajek",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookies": "^0.6.1",
+    "crypto": "0.0.3",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-alpha7",
+    "request": "^2.72.0",
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {
+    "localtunnel": "^1.8.1",
+    "nodemon": "^1.9.2"
+  }
+}
