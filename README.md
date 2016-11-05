@@ -20,8 +20,7 @@ todo
 
 ## Installation
 
-Install dependencies ( + make sure MongoDB is running at localhost:27017)
-
 ```
 npm install
+npm start
 ```
