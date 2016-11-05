@@ -7,6 +7,7 @@ let lines = fs.readFileSync('tfl-p6-sep-data.csv').toString().split("\n");
 let trams = {};
 let stopNames = {};
 let stopPairs = {};
+let tramJourneyIndx = {};
 
 lines.forEach(line => {
 	let attrs = line.split(",");
@@ -45,32 +46,12 @@ lines.forEach(line => {
 		}
 	}
 	
+	// 	tramJourneyIndx[tramId] = tramJourneyIndx[tramId] + 1 || 0;
 	stopNames[stopName] = 1;
 });
 
 // console.log(Object.keys(trams).map(xKey => { let x = trams[xKey]; return x[x.length-1] }));
 
-let tramJourneyIndx = {};
-
-
-lines.forEach(line => {
-	let attrs = line.split(",");
-	let stopCode = attrs[1];
-	let stopName = attrs[2].replace(/\'/g, "");
-	let stopType = attrs[3];
-	let time = attrs[4];
-	let waitTime = attrs[5];
-	let tramLine = attrs[6];
-	let tramId = attrs[7];
-	let peopleIn = attrs[8];
-	let peopleOut = attrs[9];
-	let peopleLoad = attrs[10];
-	let percentSeatLoad = attrs[11];
-	let percentLoad = attrs[12];
-
-	tramJourneyIndx[tramId] = tramJourneyIndx[tramId] + 1 || 0;
-	
-});
 
 function isStopNameValid(name) {
 	return (name != '* UNKNOWN *' && name != '*DEPOT*');
