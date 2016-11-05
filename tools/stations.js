@@ -1,12 +1,12 @@
 
 module.exports = {
-	"stations": 
+	"stations": [
 		{"station":"Wandle Park","lat":51.3734186,"lon":-0.1133771},
 		{"station":"Elmers End","lat":51.398893,"lon":-0.0434499},
-		{"station":"Fieldway","lat":43.6412168,"lon":-79.5287245},
+		{"station":"Fieldway","lat":51.3509582,"lon":-0.0262749},
 		{"station":"Beckenham Junction","lat":51.4109587,"lon":-0.0258908},
 		{"station":"Harrington Road","lat":51.4940189,"lon":-0.1767215},
-		{"station":"Lebanon Road","lat":33.1223381,"lon":-96.8260035},
+		{"station":"Lebanon Road","lat":51.3752033,"lon":-0.0871687},
 		{"station":"Waddon Marsh","lat":51.37708,"lon":-0.11799},
 		{"station":"Therapia Lane","lat":51.3851641,"lon":-0.1341829},
 		{"station":"Blackhorse Lane","lat":51.593055,"lon":-0.0400472},
@@ -19,26 +19,27 @@ module.exports = {
 		{"station":"Morden Road","lat":51.3993886,"lon":-0.1796978},
 		{"station":"Merton Park","lat":51.411406,"lon":-0.2080169},
 		{"station":"Beckenham Road","lat":51.4111647,"lon":-0.047949},
-		{"station":"Avenue Road","lat":43.679924,"lon":-79.398702},
+		{"station":"Avenue Road","lat":51.4068033,"lon":-0.0516387},
 		{"station":"Birkbeck","lat":51.521975,"lon":-0.130462},
 		{"station":"Mitcham Junction","lat":51.39295,"lon":-0.1577299},
 		{"station":"Wimbledon","lat":51.4183388,"lon":-0.2206288},
 		{"station":"New Addington","lat":51.348184,"lon":-0.017094},
-		{"station":"Arena","lat":45.4389958,"lon":10.9943574},
-		{"station":"George Street","lat":-33.8694145,"lon":151.2069488},
+		{"station":"Arena","lat":51.3915446,"lon":-0.0603707},
+		{"station":"George Street","lat":51.3739733,"lon":-0.1009087},
 		{"station":"Addington Village","lat":51.3585601,"lon":-0.0306037},
 		{"station":"Lloyd Park","lat":51.5933743,"lon":-0.0218867},
-		{"station":"Church Street","lat":40.7151845,"lon":-74.0077486},
+		{"station":"Church Street","lat":51.3737133,"lon":-0.1065287},
 		{"station":"Reeves Corner","lat":51.3738297,"lon":-0.1062489},
 		{"station":"Gravel Hill","lat":51.5979054,"lon":-0.1988057},
-		{"station":"Centrale","lat":45.4839708,"lon":9.2060969},
+		{"station":"Centrale","lat":51.3758227,"lon":-0.1059668},
 		{"station":"Ampere Way","lat":51.381979,"lon":-0.123944},
-		{"station":"Woodside","lat":40.7512123,"lon":-73.9036486},
-		{"station":"King Henry's Drive","lat":51.3413903,"lon":-0.0053078},
+		{"station":"Woodside","lat":51.3869323,"lon":-0.0677317},
+		{"station":"King Henrys Drive","lat":51.3413903,"lon":-0.0053078},
 		{"station":"Coombe Lane","lat":51.4115798,"lon":-0.2405578},
-		{"station":"Sandilands","lat":53.3019929,"lon":0.290315},
+		{"station":"Sandilands","lat":51.3750233,"lon":-0.0802087},
 		{"station":"Mitcham","lat":51.402869,"lon":-0.166709},
-		{"station":"West Croydon","lat":-34.89,"lon":138.558},
+		{"station":"West Croydon","lat":51.378391,"lon":-0.1049599},
 		{"station":"Addiscombe","lat":51.3750731,"lon":-0.0765217}
+	]
 };
 

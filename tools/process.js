@@ -40,7 +40,8 @@ lines.forEach(line => {
 			let pairKey = stopPair.from + ";" + stopPair.to;
 			stopPairs[pairKey] = stopPair;
 		} else {
-			console.log("Invalid: ", prevStop.stop, thisStop.stop);
+			if (prevStop.stop != thisStop.stop)
+				console.log("Invalid: ", prevStop.stop, thisStop.stop);
 		}
 	}
 	
@@ -85,12 +86,12 @@ const pairsList = Object.keys(stopPairs).map(x => stopPairs[x]);
 const pairsOutput = JSON.stringify({ pairs: pairsList }, null, 2);
 
 // console.log(Object.keys(stopPairs), Object.keys(stopPairs).length);
-console.log(Object.keys(stopNames));
+// console.log(Object.keys(stopNames));
 
 
 //fs.writeFileSync('stop_pairs.json', pairsOutput);
 
 // require('./directions').fetch([{ from: 'a', to: ' B b' }]);
 require('./directions').fetch(pairsList);
-
+console.log("directions fetched");
 

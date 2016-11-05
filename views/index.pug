@@ -11,30 +11,30 @@ html
 		script(src='static/js/vendor/jquery-3.1.1.min.js')
 		script(src='static/js/vendor/mapbox-2.4.0.min.js')
 		script(src='static/js/vendor/turf.min.js')
-		script(src="socket.io/socket.io.js")
+		//script(src="socket.io/socket.io.js")
+		script(src='static/js/directions.json')
 		script(src='static/js/main.js')
 
 
 	body
 		div#map
+		button(onclick="startAnimation();") Start
 
-		button(onclick="notify_clicked();") Send message to the server
+		//button(onclick="notify_clicked();") Send message to the server
 
 		script.
-			var socket = io(); // init connection
+			/*var socket = io(); // init connection
 
-			/* SEND Message */
 			function notify_clicked() { 
 				socket.emit('user_clicked_button', {data: 'I clicked the big button'});
 			}
 
-			/* RECEIVE Message */
 			socket.on('big_news', function(data) {
 				console.log(data);
 			});
 
 			socket.on('all_ok', function(data) {
 				console.log(data);
-			});
+			});*/
 
 
