@@ -11,7 +11,7 @@ let stopPairs = {};
 lines.forEach(line => {
 	let attrs = line.split(",");
 	let stopCode = attrs[1];
-	let stopName = attrs[2];
+	let stopName = attrs[2].replace(/\'/g, "");
 	let stopType = attrs[3];
 	let time = attrs[4];
 	let waitTime = attrs[5];
@@ -34,10 +34,13 @@ lines.forEach(line => {
 
 		let prevStop = trams[tramId][trams[tramId].length-2];
 		let thisStop = trams[tramId][trams[tramId].length-1];
-		if (isStopNameValid(prevStop.stop) && isStopNameValid(thisStop.stop)) {
+
+		if (prevStop.stop != thisStop.stop && isStopNameValid(prevStop.stop) && isStopNameValid(thisStop.stop)) {
 			let stopPair = { from: prevStop.stop, to: thisStop.stop };
 			let pairKey = stopPair.from + ";" + stopPair.to;
 			stopPairs[pairKey] = stopPair;
+		} else {
+			console.log("Invalid: ", prevStop.stop, thisStop.stop);
 		}
 	}
 	
@@ -52,7 +55,7 @@ let tramJourneyIndx = {};
 lines.forEach(line => {
 	let attrs = line.split(",");
 	let stopCode = attrs[1];
-	let stopName = attrs[2];
+	let stopName = attrs[2].replace(/\'/g, "");
 	let stopType = attrs[3];
 	let time = attrs[4];
 	let waitTime = attrs[5];
@@ -79,13 +82,15 @@ function timeToSeconds(formatedTime) {
 }
 
 const pairsList = Object.keys(stopPairs).map(x => stopPairs[x]);
+const pairsOutput = JSON.stringify({ pairs: pairsList }, null, 2);
 
-console.log(Object.keys(stopPairs), Object.keys(stopPairs).length);
+// console.log(Object.keys(stopPairs), Object.keys(stopPairs).length);
 console.log(Object.keys(stopNames));
 
-var pairsOutput = JSON.stringify({ pairs: pairsList }, null, 2);
 
-fs.writeFileSync('stop_pairs.json', pairsOutput);
+//fs.writeFileSync('stop_pairs.json', pairsOutput);
+
+// require('./directions').fetch([{ from: 'a', to: ' B b' }]);
+require('./directions').fetch(pairsList);
 
 
-require('./directions').fetch([{ from: 'a', to: ' B b' }]);

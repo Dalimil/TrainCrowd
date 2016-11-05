@@ -7,16 +7,25 @@ $(function() {
 
 	var map = L.mapbox.map('map', 'mapbox.dark').setView([38.05, -84.5], 12);
 
+	var stations = [ { name: 'test', latlng: { lat: 55, lng: -3 } } ];
+
+	var stationLayer = directions.map(function(pairRoute) {
+		return {
+			type: "Feature",
+	        properties: {},
+	        geometry: {
+	            type: "LineString",
+           		coordinates: [ # todo list of lng-lat points here]
+           	}
+        };
+	});
+	
+
 	var libraries = {
 	  type: 'FeatureCollection',
-	  features: [
-	    { type: 'Feature', properties: { Name: 'Village Branch', Address: '2185 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.548369, 38.047876] } },
-	    { type: 'Feature', properties: { Name: 'Northside Branch', ADDRESS: '1733 Russell Cave Rd' }, geometry: { type: 'Point', coordinates: [-84.47135, 38.079734] } },
-	    { type: 'Feature', properties: { Name: 'Central Library', ADDRESS: '140 E Main St' }, geometry: { type: 'Point', coordinates: [-84.496894, 38.045459] } },
-	    { type: 'Feature', properties: { Name: 'Beaumont Branch', Address: '3080 Fieldstone Way' }, geometry: { type: 'Point', coordinates: [-84.557948, 38.012502] } },
-	    { type: 'Feature', properties: { Name: 'Tates Creek Branch', Address: '3628 Walden Dr' }, geometry: { type: 'Point', coordinates: [-84.498679, 37.979598] } },
-	    { type: 'Feature', properties: { Name: 'Eagle Creek Branch', Address: '101 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.442219, 37.999437] } }
-	  ]
+	  features: stations.map(function(station) {
+	  	return { type: 'Feature', properties: { title: station.name }, geometry: { type: 'Point', coordinates: [station.latlng.lng, station.latlng.lat] } };
+	  })
 	};
 
 	// Add marker color, symbol, and size to library GeoJSON
@@ -28,4 +37,5 @@ $(function() {
 
 	var libraryLayer = L.mapbox.featureLayer(libraries).addTo(map);
 	map.fitBounds(libraryLayer.getBounds());
+	map.on('click', function(e) { console.log("click ", e.latlng); });
 });
