@@ -1,23 +1,20 @@
 # TrainCrowd - HackTrain 3.0
 
-Data visualisation tool for mapping customer movements in trains/trams and stations.
+During the HackTrain 3.0 hackathon, we built a data visualisation tool that takes Travel for London dataset of tram line occupancies and visually displays them on a map.
 
-## User value
+**[Demo here](https://www.youtube.com/watch?v=jNLT8DRtJNo)**
 
-1. Visualise where the best place is to look for space in train/tram carriages. 
-2. Smart notifications to alert customers when they are approaching their stops (eg wake them up 2 stops before their final destination). 
+**Team:** [Dalimil Hajek](https://github.com/dalimil), [Willy Dinata](https://github.com/whdinata), [Tzen Szen](https://github.com/szen95)
 
-### At train stations
+This visualisation is useful not only for businesses and operators, but also for users, who can use it as a mobile app.  
+Although we only had access to past data, we can visualise real time data using the same method.
 
-Visualise how crowded platforms, incoming trains/trams, and the station is. 
+![TrainCrowd-Screenshot](https://github.com/Dalimil/TrainCrowd/blob/master/docs/screenshot-4.png)
 
-### On a train
-Visualize carriage occupancy as a heatmap or a cluster of points.
 
-## Business value
+Train/tram operators can utilise the visualised data in order to preemptively/automatically adjust schedules based on the load in the trains/trams or stations. 
 
-1. Train/tram operators can utilise the visualised data in order to preemptively/automatically adjust schedules based on the load in the trains/trams or stations. 
-2. Other businesses (eg buses, Uber taxi drivers, etc.) can utlise the visualised data to adjust their schedules and direct flow to busier stations at certain times of the day to increase revenue by picking up more customers from the stations. 
+Other businesses (eg buses, Uber taxi drivers, etc.) can utlise the visualised data to adjust their schedules and direct flow to busier stations at certain times of the day to increase revenue by picking up more customers from the stations. 
 
 
 ## Installation
