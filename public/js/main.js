@@ -115,6 +115,7 @@ $(function() {
 	});
 	libraryLayer.setGeoJSON(libraries);
 
+
 	//console.log(stationRouteLayer);
 
 	map.fitBounds(libraryLayer.getBounds());
@@ -177,15 +178,39 @@ function process() {
 
 	tramLayer = L.mapbox.featureLayer(tramLayerData).addTo(map);
 
-	var legendControl = L.mapbox.legendControl();
+	tramLayer.on('mouseover', function(e) {
+		// console.log('aaaaaaaaaa');
+		let props = e.layer.feature.properties;
+	    props['old-color'] = props['marker-color'];
+	    props['marker-color'] = '#faa';
+	    $tramInfo.html("<h1>" + props.title + "</h1>" + props.description);
+	    tramLayer.setGeoJSON(tramLayerData);
+	});
+	tramLayer.on('mouseout', function(e) {
+		console.log('bbbbbbbbbb');
+		e.layer.feature.properties['marker-color'] = e.layer.feature.properties['old-color'];
+	    tramLayer.setGeoJSON(tramLayerData);
+	})
+
+	var legendControl = L.mapbox.legendControl({ position: 'topright' });
 	legendControl.addLegend('<div class="legend"></div>');
 	map.addControl(legendControl);
 
-	animationInterval = setInterval(tick, 170);
+	var tramInfoLegend = L.mapbox.legendControl({ position: 'bottomleft' });
+	tramInfoLegend.addLegend('<div id="tram-info"></div>');
+	map.addControl(tramInfoLegend);
+
+	animationInterval = setInterval(tick, 17);
 	$legend = $(".legend");
+	$tramInfo = $("#tram-info");
+
+	/*var clock = $('#my-watch').FlipClock({
+		autostart: false,
+		clockFace: 'MinuteCounter'
+	});*/
 
 }
-
+let $tramInfo;
 let redrawTime;
 let currentTime;
 
@@ -220,7 +245,7 @@ function tick() {
 		currentTime = time;
 		// process this tram event and move on
 		currentLineIndex += 1;
-		console.log(currentLineIndex / lines.length);
+		if (currentLineIndex %100 == 0) console.log(currentLineIndex / lines.length);
 		if (currentLineIndex > lines.length) {
 			clearInterval(animationInterval);
 		}
@@ -242,17 +267,18 @@ function tick() {
 				from: { lat: stationLatlng.lat, lng: stationLatlng.lng, time: time + waitTime },
 				to: { lat: toStop.lat, lng: toStop.lng, time: tramsJourneyStop.time },
 				properties: {
-			    	title: "Line " + tramLine + " - " + tramId,
-			    	description: "Load " + peopleLoad + " " + percentLoad + " " + percentSeatLoad,
-			    	'marker-color': (percentLoad > 10) ? "#C33" : (percentLoad > 5) ? "#CC3" : "#3C3",
+			    	title: "Line " + tramLine + " - Tram " + tramId,
+			    	description: "People inside: <strong>" + peopleLoad + "</strong><br/>Percent full: <strong>" + 2 * percentLoad + "%</strong><br />",
+			    	'marker-color': (percentLoad > 25) ? "#C33" : (percentLoad > 15) ? "#E60" : (percentLoad > 6) ? "#CC3" : "#3C3",
 			    	'marker-size': "small"
 			    }
 			};
 		}
 	}
 
-	$legend.text(timeFromSeconds(currentTime);
-		
+	$legend.text(timeFromSeconds(currentTime));
+
+
 	//console.log(activeTrams);
 	var newTramLayerData = Object.keys(activeTrams).map(activeTramKey => {
 		let tram = activeTrams[activeTramKey];
@@ -297,15 +323,21 @@ function timeToSeconds(formatedTime) {
 }
 
 function timeFromSeconds(timeSeconds) {
-	let seconds = timeSeconds % 60;
-	timeSeconds = Math.round(timeSeconds / 60);
+	let seconds = (timeSeconds % 60).toString();
+	timeSeconds = Math.floor(timeSeconds / 60);
 
-	let minutes = timeSeconds % 60;
-	timeSeconds = Math.round(timeSeconds / 60);
+	let minutes = (timeSeconds % 60).toString();
+	timeSeconds = Math.floor(timeSeconds / 60);
 
-	let hours = Math.round(timeSeconds);
+	let hours = timeSeconds.toString();
 
-	return hours + ":" + minutes;
+	if (hours.length == 1) hours = "0" + hours;
+	if (minutes.length == 1) minutes = "0" + minutes;
+	if (seconds.length == 1) seconds = "0" + seconds;
+
+	let ampm = "am";
+	if (hours >= 12) ampm = "pm";
+	return hours + ":" + minutes + " " + ampm;
 }
 
 

@@ -6,11 +6,13 @@ html
 		meta(name='viewport', content='width=device-width, initial-scale=1')
 		link(rel='shortcut icon', href='static/favicon.ico')
 		link(href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css', rel='stylesheet')
+		link(rel='stylesheet', href='static/css/flipclock.css')
 		link(rel='stylesheet', href='static/css/main.css')
 		
 		script(src='static/js/vendor/jquery-3.1.1.min.js')
 		script(src='static/js/vendor/mapbox-2.4.0.min.js')
 		script(src='static/js/vendor/turf.min.js')
+		script(src='static/js/vendor/flipclock.min.js')
 		//script(src="socket.io/socket.io.js")
 		script(src='static/js/directions.json')
 		script(src='static/js/main.js')
@@ -18,6 +20,8 @@ html
 
 	body
 		div#map
+		div#my-watch
+		div#tram-info
 		//button(onclick="startAnimation();") Start
 
 		//button(onclick="notify_clicked();") Send message to the server

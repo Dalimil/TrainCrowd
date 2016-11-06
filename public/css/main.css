@@ -27,3 +27,18 @@ html, body {
 .icon-sf {
   background: #4169E1;
 }
+
+.legend {
+	font-weight: bold;
+	font-size: 2em;
+}
+
+#my-watch {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 20px;
+	z-index: 10;
+	width: auto;
+	transform: scale(0.5);
+}
